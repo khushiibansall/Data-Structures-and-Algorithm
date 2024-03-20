@@ -1,4 +1,6 @@
 //Search In A Rotated Sorted Array in O(log n)
+#include <bits/stdc++.h>
+using namespace std;
 bool searchInARotatedSortedArrayII(vector<int>&A, int key) {
         int lo = 0;
         int hi = A.size() - 1;
