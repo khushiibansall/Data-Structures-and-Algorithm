@@ -1,0 +1,22 @@
+class Solution {
+public:
+    int maxNumberOfBalloons(string text) {
+        unordered_map<char, int> letterCount;
+
+        for (char ch : text) {
+            if (isalpha(ch)) {
+                letterCount[ch]++;
+            }
+        }
+
+        int countB = letterCount['b'];
+        int countA = letterCount['a'];
+        int countL = letterCount['l'] / 2; 
+        int countO = letterCount['o'] / 2; 
+        int countN = letterCount['n'];
+
+        int maxBalloons = min({countB, countA, countL, countO, countN});
+
+        return maxBalloons;
+    }
+};
