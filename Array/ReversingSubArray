@@ -1,0 +1,21 @@
+//Q. make two arrays equal by reversing the sub array 
+class Solution {
+public:
+    bool canBeEqual(vector<int>& target, vector<int>& arr) {
+        unordered_map<int, int> countTarget;
+        unordered_map<int, int> countArr;
+
+        // Count frequencies for target
+        for (int num : target) {
+            countTarget[num]++;
+        }
+
+        // Count frequencies for arr
+        for (int num : arr) {
+            countArr[num]++;
+        }
+
+        // Compare frequency maps
+        return countTarget == countArr;
+    }
+};
