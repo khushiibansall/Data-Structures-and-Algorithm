@@ -1,0 +1,24 @@
+#include <vector>
+#include <algorithm> // For std::max
+
+int longestSubarrayWithSumK(const std::vector<int>& a, long long k) {
+    int i = 0;             // Start of the sliding window
+    int maxi = 0;         // To keep track of the maximum length of the subarray
+    long long sum = 0;    // Current sum of the sliding window
+
+    for (int j = 0; j < a.size(); ++j) {
+        sum += a[j];     // Add the current element to the sum
+
+        // Shrink the window from the left if the sum exceeds k
+        while (sum > k && i <= j) {
+            sum -= a[i];
+            ++i;
+        }
+
+        // Check if the current sum equals k and update the maximum length
+        if (sum == k) {
+            maxi = std::max(maxi, j - i + 1);
+        }
+    }
+    return maxi;
+}
