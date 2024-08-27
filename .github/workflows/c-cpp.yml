@@ -8,15 +8,17 @@ on:
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
+
     steps:
     - uses: actions/checkout@v4
-    - name: configure
-      run: ./configure
-    - name: make
-      run: make
-    - name: make check
-      run: make check
-    - name: make distcheck
-      run: make distcheck
+    
+    - name: Set up C++ Compiler
+      run: sudo apt-get install -y g++
+
+    - name: Build and Run WordPattern.cpp
+      run: |
+        g++ -o wordPattern Array/wordPattern.cpp
+        ./wordPattern
+
+    # Add more steps to compile and run other C++ files as needed
